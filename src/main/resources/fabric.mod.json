@@ -5,17 +5,17 @@
 	"name": "Optium",
 	"description": "Modifies Minecraft's rendering engine",
 	"authors": [
-		"Me!"
+		"Dokko"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/dokko-games/Optium"
 	},
-	"license": "CC0-1.0",
+	"license": "LGPL v3",
 	"icon": "assets/optium/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"main": [
+		"client": [
 			"com.dokko.optium.Optium"
 		]
 	},
