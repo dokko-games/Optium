@@ -1,5 +1,6 @@
 package com.dokko.optium.mixin;
 
+import com.dokko.optium.Optium;
 import com.dokko.optium.screen.OptiumSettingsScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.option.OptionsScreen;
@@ -25,6 +26,7 @@ public abstract class OptionsScreenMixin extends Screen {
                 .findFirst()
                 .orElseGet(() -> ButtonWidget.builder(Text.empty(), b -> {}).build()); // should never happen
         this.addDrawableChild(ButtonWidget.builder(Text.translatable("optium.menu.settings"), (button) ->
-                this.client.setScreen(new OptiumSettingsScreen(this))).dimensions(credits.getRight()+2, credits.getY(), 80, 20).build());
+                this.client.setScreen(new OptiumSettingsScreen(this, Optium.getManager())))
+                .dimensions(credits.getRight()+2, credits.getY(), 50, 20).build());
     }
 }

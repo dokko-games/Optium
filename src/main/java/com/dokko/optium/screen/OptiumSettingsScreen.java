@@ -1,25 +1,21 @@
 package com.dokko.optium.screen;
 
-import net.minecraft.client.gui.DrawContext;
+import com.dokko.optium.config.OptiumConfig;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
+import net.uku3lig.ukulib.config.ConfigManager;
+import net.uku3lig.ukulib.config.option.CyclingOption;
+import net.uku3lig.ukulib.config.option.WidgetCreator;
+import net.uku3lig.ukulib.config.screen.AbstractConfigScreen;
 
-public class OptiumSettingsScreen extends Screen {
-
-    private final Screen parent;
-
-    public OptiumSettingsScreen(Screen parent) {
-        super(Text.translatable("optium.menu.settings"));
-        this.parent = parent;
+public class OptiumSettingsScreen extends AbstractConfigScreen<OptiumConfig> {
+    public OptiumSettingsScreen(Screen parent, ConfigManager<OptiumConfig> manager) {
+        super("optium.menu.settings", parent, manager);
     }
 
     @Override
-    public void close() {
-        this.client.setScreen(this.parent);
-    }
-
-    @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
+    protected WidgetCreator[] getWidgets(OptiumConfig config) {
+        return new WidgetCreator[] {
+                CyclingOption.ofBoolean("optium.feature.zfirstpass", config.isZFirstPass(), config::setZFirstPass)
+        };
     }
 }
